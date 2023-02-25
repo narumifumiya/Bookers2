@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   # ログイン後はhomes/aboutページに遷移
   def after_sign_in_path_for(resource)
-    about_path
+    user_path(current_user)
   end
   
   # ログアウト後はhomes/topページ（ルートパスに設定済）に遷移
