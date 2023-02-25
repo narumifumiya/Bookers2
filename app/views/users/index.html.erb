@@ -1,12 +1,73 @@
-<h2>Users</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-3">
+      
+      <div>
+        <h2>User info</h2>
+        <%= image_tag @user.get_profile_image(100, 100) %>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th>name</th>
+              <td><%= @user.name %></td>
+            </tr>
+            <tr>
+              <th>introduction</th>
+              <td><%= @user.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <div>
+          <%= link_to edit_user_path(@user) do %>
+           <p class="row btn btn-block btn-outline-secondary"><i class="fas fa-user-cog"></i></p>
+         <% end %>
+        </div>
+        
+      </div>
+
+      <div>
+        <h2>New book</h2>
+          <%= form_with model: @book do |f| %>
+            <div class="form-group">
+              <label for="title">Title</label><br>
+              <%= f.text_field :title, id: "title", class: "form-control" %>
+            </div>
+            
+            <div class="form-group">
+            <label for="body">Opinion</label><br>
+            <%= f.text_area :body, id: "body", class: "form-control"%>
+            </div>
+            <%= f.submit 'Create Book', class: "btn btn-success" %>
+          <% end %>
+      </div>
+    </div>
+    
   
-  
-</table>
+    <div class="col-md-8">
+      <div>
+        <h2>Users</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td><%= image_tag user.get_profile_image(80, 80) %></td>
+                <td><%= user.name %></td>
+                <td><%= link_to "Show", user_path(user.id)%></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+</div>
