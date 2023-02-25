@@ -44,7 +44,7 @@
       </div>
     </div>
     
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
       <div>
         <h2>Book detail</h2>
         <table class="table">
@@ -62,10 +62,14 @@
               <td>
                 <!-- もし、投稿者 == 現在ログインしているユーザだったら  -->
                 <% if @book.user == current_user %>
-                  <%= link_to "Edit", edit_book_path(@book) %>
-                  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
+                  <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
                 <% end %>
               </td>
+              <td>
+                <% if @book.user == current_user %>
+                  <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger"%>
+                <% end %>
+              </td>  
               
             </tr>
           </tbody>
