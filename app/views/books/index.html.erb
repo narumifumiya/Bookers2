@@ -1,14 +1,14 @@
 <div class="container">
   
-  <!-- 共通テンプレートからbookの投稿エラーメッセージを呼び出し -->
+  <!-- 部分テンプレートからbookの投稿エラーメッセージを呼び出し -->
   <%= render 'error', book:@book %>
   
   <div class="row">
     
     <div class="col-md-3">
-      <!-- 共通テンプレートからuser-infoを呼び出し -->
+      <!-- 部分テンプレートからuser-infoを呼び出し -->
       <%= render 'users/user_info', user:@user %>
-      <!-- 共通テンプレートからnew-bookを呼び出し -->
+      <!-- 部分テンプレートからnew-bookを呼び出し -->
       <%= render 'new_book', book:@book %>
     </div>
     

@@ -3,7 +3,7 @@
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       
       <h2>User info</h2>
-      <!-- 共通テンプレートから@userの投稿エラーメッセージを呼び出し -->
+      <!-- 部分テンプレートから@userの投稿エラーメッセージを呼び出し -->
       <%= render 'books/error', book:@user %>
       
         <%= form_with model: @user do |f| %>
