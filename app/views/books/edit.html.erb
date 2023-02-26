@@ -3,15 +3,8 @@
     
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
-      
-      <% if @book.errors.any? %>
-        <h3><%= @book.errors.count %> error prohibited this obj from being saved:</h3>
-        <ul class="ps-3">
-          <% @book.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <!-- 共通テンプレートから@bookの投稿エラーメッセージを呼び出し -->
+      <%= render 'error', book:@book %>
       
       <%= form_with model: @book do |f| %>
         <div class="form-group">

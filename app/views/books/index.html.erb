@@ -1,57 +1,15 @@
 <div class="container">
   
-  <% if @book.errors.any? %>
-    <h3><%= @book.errors.count %> error prohibited this obj from being saved:</h3>
-    <ul class="ps-3">
-      <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
+  <!-- 共通テンプレートからbookの投稿エラーメッセージを呼び出し -->
+  <%= render 'error', book:@book %>
   
   <div class="row">
     
     <div class="col-md-3">
-      
-      <div>
-        <h2>User info</h2>
-        <%= image_tag @user.get_profile_image(100, 100) %>
-        <table class="table">
-          <tbody>
-            <tr>
-              <th>name</th>
-              <td><%= @user.name %></td>
-            </tr>
-            <tr>
-              <th>introduction</th>
-              <td><%= @user.introduction %></td>
-            </tr>
-          </tbody>
-        </table>
-        
-        <div>
-          <%= link_to edit_user_path(@user) do %>
-           <p class="row btn btn-block btn-outline-secondary"><i class="fas fa-user-cog"></i></p>
-         <% end %>
-        </div>
-        
-      </div>
-      
-      <div>
-        <h2>New book</h2>
-          <%= form_with model: @book do |f| %>
-            <div class="form-group">
-              <label for="title">Title</label><br>
-              <%= f.text_field :title, id: "title", class: "form-control" %>
-            </div>
-            
-            <div class="form-group">
-            <label for="body">Opinion</label><br>
-            <%= f.text_area :body, id: "body", class: "form-control"%>
-            </div>
-            <%= f.submit 'Create Book', class: "btn btn-success" %>
-          <% end %>
-      </div>
+      <!-- 共通テンプレートからuser-infoを呼び出し -->
+      <%= render 'users/user_info', user:@user %>
+      <!-- 共通テンプレートからnew-bookを呼び出し -->
+      <%= render 'new_book', book:@book %>
     </div>
     
     <div class="col-md-8 offset-md-1">
